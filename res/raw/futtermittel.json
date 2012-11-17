@@ -1,0 +1,19 @@
+{ 'Anwelksilage':{
+        'Trockensubstanz':0.59,
+        'Energie':6.2,
+        'Rohprotein':0.063,
+        'Calcium':0.0031,
+        'Phosphor':0.0018,
+        'Magnesium':0.0011,
+        'Kalium':0.0116
+    },
+    'Wiesenheu':{
+        'Trockensubstanz':0.869,
+        'Energie':8.0,
+        'Rohprotein':0.058,
+        'Calcium':0.0046,
+        'Phosphor':0.0027,
+        'Magnesium':0.0017,
+        'Kalium':0.017
+    }
+}

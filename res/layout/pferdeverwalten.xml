@@ -4,17 +4,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <Button
-        android:id="@+id/pferdeverwaltenbutton"
-        android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-        android:text="Pferde verwalten"
-            />
-    <TextView
-    android:id="@+id/mytext"
+<TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Hello World, MainActivity"
+    android:text="Hello World, Pferde"
     />
 </LinearLayout>
 
