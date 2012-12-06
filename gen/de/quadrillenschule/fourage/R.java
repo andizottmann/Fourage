@@ -14,12 +14,31 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int mytext=0x7f060001;
-        public static final int pferdeverwaltenbutton=0x7f060000;
+        public static final int bedarfsSelector=0x7f07000c;
+        public static final int bedarfsSelectorRP=0x7f07000e;
+        public static final int futtermittelList=0x7f070012;
+        public static final int futtermittelListFM=0x7f070001;
+        public static final int futtermittelverwaltenbutton=0x7f070003;
+        public static final int naehrstoffist=0x7f070011;
+        public static final int naehrstoffname=0x7f07000f;
+        public static final int naehrstoffsoll=0x7f070010;
+        public static final int pferdeSelector=0x7f070006;
+        public static final int pferdeSelectorFM=0x7f070000;
+        public static final int pferdeSelectorRatio=0x7f07000d;
+        public static final int pferdegewicht=0x7f07000b;
+        public static final int pferdegewichtanzeige=0x7f07000a;
+        public static final int pferdenameedittext=0x7f070009;
+        public static final int pferdeverwaltenbutton=0x7f070002;
+        public static final int pferdhinzufuegenbutton=0x7f070007;
+        public static final int pferdloeschenbutton=0x7f070008;
+        public static final int rationsplanbutton=0x7f070004;
+        public static final int scanbutton=0x7f070005;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
-        public static final int pferdeverwalten=0x7f030001;
+        public static final int futtermittelverwalten=0x7f030000;
+        public static final int main=0x7f030001;
+        public static final int pferdeverwalten=0x7f030002;
+        public static final int rationsplan=0x7f030003;
     }
     public static final class raw {
         public static final int bedarf=0x7f040000;
@@ -27,5 +46,22 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int bedarfsplan=0x7f050003;
+        public static final int futtermittel=0x7f050006;
+        public static final int futtermittelentfernen=0x7f050008;
+        public static final int futtermittelhinzufuegen=0x7f050007;
+        public static final int futtermittelverwalten=0x7f05000c;
+        public static final int gewicht=0x7f050002;
+        public static final int pferdename=0x7f050001;
+        public static final int pferdeverwalten=0x7f05000a;
+        public static final int pferdhinzufuegen=0x7f050004;
+        public static final int pferdloeschen=0x7f050005;
+        public static final int pferdmitbarcode=0x7f050009;
+        public static final int rationsplan=0x7f05000b;
+    }
+    public static final class style {
+        public static final int HeyTheme=0x7f060000;
+        public static final int PageTitle=0x7f060002;
+        public static final int PickerStyle=0x7f060001;
     }
 }

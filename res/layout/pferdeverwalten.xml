@@ -4,10 +4,69 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView
+    <TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Hello World, Pferde"
+    android:text="@string/pferdeverwalten"
+    style="@style/PageTitle"
     />
+    <Spinner
+        android:id="@+id/pferdeSelector"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+     
+      />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    >
+        <Button
+        android:id="@+id/pferdhinzufuegenbutton"
+        android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+        android:text="@string/pferdhinzufuegen"
+            />
+        <Button
+        android:id="@+id/pferdloeschenbutton"
+        android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+        android:text="@string/pferdloeschen"
+            />
+    </LinearLayout>
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/pferdename"
+    />
+    <EditText
+    android:id="@+id/pferdenameedittext"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:inputType="text"/>
+    <TextView
+    android:id="@+id/pferdegewichtanzeige"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/gewicht"
+    />
+    <SeekBar
+    android:id="@+id/pferdegewicht"
+    android:max="600"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:imeActionLabel="@string/gewicht"/>
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/bedarfsplan"
+    />
+    <Spinner
+	 android:id="@+id/bedarfsSelector"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+          android:hapticFeedbackEnabled="true" />
+   
 </LinearLayout>
 

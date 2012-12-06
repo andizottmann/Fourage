@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+         <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/rationsplan"
+ style="@style/PageTitle"
+    />
+    <Spinner
+	android:id="@+id/pferdeSelectorRatio"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        />
+    <Spinner
+	android:id="@+id/bedarfsSelectorRP"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        
+         />
+ 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+        <TextView
+    android:id="@+id/naehrstoffname"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:paddingRight="10pt"
+    />
+        <TextView
+    android:id="@+id/naehrstoffsoll"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+     android:paddingRight="10pt"
+    />
+        <TextView
+    android:id="@+id/naehrstoffist"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+    />
+    </LinearLayout>
+     
+    <ListView
+     android:id="@+id/futtermittelList"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+         android:layout_weight="1"
+    
+/>
+</LinearLayout>
+

@@ -5,7 +5,8 @@
         'Calcium':0.0031,
         'Phosphor':0.0018,
         'Magnesium':0.0011,
-        'Kalium':0.0116
+        'Kalium':0.0116,
+        'Maximalwert':10
     },
     'Wiesenheu':{
         'Trockensubstanz':0.869,
@@ -14,6 +15,61 @@
         'Calcium':0.0046,
         'Phosphor':0.0027,
         'Magnesium':0.0017,
-        'Kalium':0.017
+        'Kalium':0.017,
+        'Maximalwert':20
+    },
+     'Gerstenstroh':{
+        'Trockensubstanz':0.860,
+        'Energie':5.4,
+        'Rohprotein':0.009,
+        'Calcium':0.0034,
+        'Phosphor':0.0009,
+        'Magnesium':0.0009,
+        'Kalium':0.0089,
+        'Maximalwert':10
+    }
+    ,
+     'Mohrrüben':{
+        'Trockensubstanz':0.110,
+        'Energie':1.7,
+        'Rohprotein':0.009,
+        'Calcium':0.0004,
+        'Phosphor':0.0003,
+        'Magnesium':0.0002,
+        'Kalium':0.0021,
+        'Maximalwert':10
+    }
+    ,
+     'Hafer':{
+        'Trockensubstanz':0.880,
+        'Energie':11.5,
+        'Rohprotein':0.085,
+        'Calcium':0.0011,
+        'Phosphor':0.0032,
+        'Magnesium':0.0012,
+        'Kalium':0.0007,
+        'Maximalwert':10
+    }
+     ,
+     'Reformin':{
+        'Trockensubstanz':0.950,
+        'Energie':0.0,
+        'Rohprotein':0.0,
+        'Calcium':0.142,
+        'Phosphor':0.05,
+        'Magnesium':0.015,
+        'Kalium':0.0,
+        'Maximalwert':0.2
+    }
+     ,
+     'Schwarzkümmelöl':{
+        'Trockensubstanz':0.0,
+        'Energie':34.0,
+        'Rohprotein':0.0,
+        'Calcium':0.0,
+        'Phosphor':0.0,
+        'Magnesium':0.0,
+        'Kalium':0.0,
+        'Maximalwert':0.5
     }
 }

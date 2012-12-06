@@ -12,16 +12,39 @@ import java.util.ArrayList;
  */
 public class Futtermittel {
 
-    static final float KEINHOECHSTANTEIL = -1.0f;
-    static final float KEINFESTWERT=-1.0f;
     private String name;
-    private float hoechstanteil = KEINHOECHSTANTEIL;
-    private float festwert = KEINFESTWERT;
+    private double menge = 0.0;
+    private double maximalwert = 0.0;
     private ArrayList<Naehrstoff> naehrstoffe;
 
-    public Futtermittel(String name,ArrayList<Naehrstoff> naehrstoffe){
-      this.name=name;
-      this.naehrstoffe=naehrstoffe;
+    public Futtermittel(String name, ArrayList<Naehrstoff> naehrstoffe) {
+        this.name = name;
+        this.naehrstoffe = naehrstoffe;
+    }
+
+    @Override
+    public Futtermittel clone() {
+        ArrayList<Naehrstoff> cn = new ArrayList();
+        for (Naehrstoff n : naehrstoffe) {
+            cn.add(n.clone());
+        }
+        Futtermittel retval = new Futtermittel(name, cn);
+        retval.setMaximalwert(maximalwert);
+        return retval;
+    }
+
+    public void extractAttributesFromNaehrstoffe() {
+        ArrayList<Naehrstoff> removeables = new ArrayList();
+
+        for (Naehrstoff n : naehrstoffe) {
+            if (n.getName().equals("Maximalwert")) {
+                maximalwert = n.getMenge();
+                removeables.add(n);
+            }
+        }
+
+        naehrstoffe.removeAll(removeables);
+
     }
 
     /**
@@ -39,34 +62,6 @@ public class Futtermittel {
     }
 
     /**
-     * @return the hoechstanteil
-     */
-    public float getHoechstanteil() {
-        return hoechstanteil;
-    }
-
-    /**
-     * @param hoechstanteil the hoechstanteil to set
-     */
-    public void setHoechstanteil(float hoechstanteil) {
-        this.hoechstanteil = hoechstanteil;
-    }
-
-    /**
-     * @return the festwert
-     */
-    public float getFestwert() {
-        return festwert;
-    }
-
-    /**
-     * @param festwert the festwert to set
-     */
-    public void setFestwert(float festwert) {
-        this.festwert = festwert;
-    }
-
-    /**
      * @return the naehrstoffe
      */
     public ArrayList<Naehrstoff> getNaehrstoffe() {
@@ -78,5 +73,38 @@ public class Futtermittel {
      */
     public void setNaehrstoffe(ArrayList<Naehrstoff> naehrstoffe) {
         this.naehrstoffe = naehrstoffe;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
+
+    /**
+     * @return the menge
+     */
+    public double getMenge() {
+        return menge;
+    }
+
+    /**
+     * @param menge the menge to set
+     */
+    public void setMenge(double menge) {
+        this.menge = menge;
+    }
+
+    /**
+     * @return the maximalwert
+     */
+    public double getMaximalwert() {
+        return maximalwert;
+    }
+
+    /**
+     * @param maximalwert the maximalwert to set
+     */
+    public void setMaximalwert(double maximalwert) {
+        this.maximalwert = maximalwert;
     }
 }

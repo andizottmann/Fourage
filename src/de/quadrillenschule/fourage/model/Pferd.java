@@ -4,9 +4,11 @@
  */
 package de.quadrillenschule.fourage.model;
 
+import android.util.JsonReader;
+import android.util.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Vector;
 
 /**
  *
@@ -15,19 +17,81 @@ import java.util.Vector;
 public class Pferd {
 
     private String name = "Standardpferd";
-    private float gewicht = 550f;
+    private double gewicht = 600.0;
     private Date geburtstag = new Date(2000, 1, 1);
-    private float futtrigkeit = 1.0f;
+    private double futtrigkeit = 1.0f;
     private String barcode = "";
     private Bedarf bedarf;
     private ArrayList<Futtermittel> futtermittel;
-    private Rationsplan rationsplan;
 
     public Pferd() {
+        futtermittel = new ArrayList();
+    }
+
+    public Pferd(JsonReader reader, BedarfsKatalog bedarfsKatalog,
+            FuttermittelKatalog futtermittelKatalog) throws IOException {
+        futtermittel = new ArrayList();
+        reader.beginObject();
+        while (reader.hasNext()) {
+            String current = reader.nextName();
+            if (current.equals("name")) {
+                name = reader.nextString();
+            } else if (current.equals("barcode")) {
+                barcode = reader.nextString();
+            } else if (current.equals("gewicht")) {
+                gewicht = reader.nextDouble();
+            } else if (current.equals("bedarf")) {
+                String bedarfstr = reader.nextString();
+                bedarf = bedarfsKatalog.getByName(bedarfstr);
+            } else if (current.equals("futtrigkeit")) {
+                futtrigkeit = reader.nextDouble();
+            } else if (current.equals("futtermittel")) {
+                reader.beginArray();
+                while (reader.hasNext()) {
+                    Futtermittel fm = futtermittelKatalog.getFuttermittelByName(reader.nextString()).clone();
+                    fm.setMenge(reader.nextDouble());
+                    futtermittel.add(fm);
+                }
+                reader.endArray();
+            } else {
+                reader.skipValue();
+            }
+        }
+        reader.endObject();
+    }
+
+    public void writeJson(JsonWriter writer) throws IOException {
+        writer.beginObject();
+        writer.name("name").value(getName());
+        writer.name("barcode").value(barcode);
+        writer.name("gewicht").value(gewicht);
+        writer.name("bedarf").value(bedarf.getName());
+        writer.name("futtrigkeit").value(futtrigkeit);
+        writer.name("futtermittel");
+        writer.beginArray();
+        for (Futtermittel fm : futtermittel) {
+            writer.value(fm.getName());
+            writer.value(fm.getMenge());
+        }
+        writer.endArray();
+        writer.endObject();
     }
 
     public String bedarfToString() {
         return bedarf.calcBedarfFuerPferd(this).toString();
+    }
+
+    public double getIstWertNaehrstoff(Naehrstoff naehrstoff) {
+        double retval = 0.0;
+        for (Futtermittel fm : futtermittel) {
+            for (Naehrstoff ns : fm.getNaehrstoffe()) {
+                if (ns.getName().equals(naehrstoff.getName())) {
+                    retval += fm.getMenge() * ns.getMenge();
+                }
+            }
+        }
+        return retval;
+
     }
 
     /**
@@ -44,19 +108,17 @@ public class Pferd {
         this.name = name;
     }
 
-
-
     /**
      * @return the gewicht
      */
-    public float getGewicht() {
+    public double getGewicht() {
         return gewicht;
     }
 
     /**
      * @param gewicht the gewicht to set
      */
-    public void setGewicht(float gewicht) {
+    public void setGewicht(double gewicht) {
         this.gewicht = gewicht;
     }
 
@@ -77,14 +139,14 @@ public class Pferd {
     /**
      * @return the futtrigkeit
      */
-    public float getFuttrigkeit() {
+    public double getFuttrigkeit() {
         return futtrigkeit;
     }
 
     /**
      * @param futtrigkeit the futtrigkeit to set
      */
-    public void setFuttrigkeit(float futtrigkeit) {
+    public void setFuttrigkeit(double futtrigkeit) {
         this.futtrigkeit = futtrigkeit;
     }
 
@@ -116,4 +178,34 @@ public class Pferd {
         this.bedarf = bedarf;
     }
 
+    public String toString() {
+        return getName();
+    }
+
+    /**
+     * @return the futtermittel
+     */
+    public ArrayList<Futtermittel> getFuttermittel() {
+        return futtermittel;
+    }
+
+    /**
+     * @param futtermittel the futtermittel to set
+     */
+    public void setFuttermittel(ArrayList<Futtermittel> futtermittel) {
+        this.futtermittel = futtermittel;
+    }
+
+    @Override
+    public Pferd clone() {
+        Pferd retval = new Pferd();
+        retval.setName(name + "2");
+        retval.setGewicht(gewicht);
+        retval.setBedarf(bedarf);
+        retval.setFuttrigkeit(futtrigkeit);
+        for (Futtermittel f : futtermittel) {
+            retval.getFuttermittel().add(f.clone());
+        }
+        return retval;
+    }
 }

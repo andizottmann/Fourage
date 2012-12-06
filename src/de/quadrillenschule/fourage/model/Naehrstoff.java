@@ -11,13 +11,17 @@ package de.quadrillenschule.fourage.model;
 public class Naehrstoff {
 
     private String name = "";
-    private double menge = 0.0f;
+    private double menge = 0.0;
 
     public Naehrstoff(String name, double menge) {
         setName(name);
         setMenge(menge);
     }
 
+    @Override
+    public Naehrstoff clone(){
+        return new Naehrstoff(name,menge);
+    }
     /**
      * @return the name
      */

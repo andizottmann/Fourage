@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Fourage</string>
+    <string name="pferdename">Pferdename</string>
+    <string name="gewicht">Gewicht</string>
+    <string name="bedarfsplan">Bedarfsplan</string>
+    <string name="pferdhinzufuegen">Pferd hinzufügen</string>
+    <string name="pferdloeschen">Pferd löschen</string>
+    <string name="futtermittel">Futtermittel</string>
+    <string name="futtermittelhinzufuegen">Futtermittel +</string>
+    <string name="futtermittelentfernen">Futtermittel -</string>
+    <string name="pferdmitbarcode">Barcode mit Pferd verknüpfen</string>
+    <string name="pferdeverwalten">Pferde verwalten</string>
+    <string name="rationsplan">Rationsplan</string>
+    <string name="futtermittelverwalten">Futtermittel verwalten</string>
 </resources>

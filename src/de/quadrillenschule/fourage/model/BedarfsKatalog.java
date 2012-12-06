@@ -30,7 +30,16 @@ public class BedarfsKatalog {
         bedarfsliste = new ArrayList();
     }
 
-     public void lade(Application app) {
+    public Bedarf getByName(String str) {
+        for (Bedarf b : bedarfsliste) {
+            if (b.getName().equals(str)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public void lade(Application app) {
         try {
             InputStream is = app.getResources().openRawResource(R.raw.bedarf);
             Writer writer = new StringWriter();
@@ -53,10 +62,10 @@ public class BedarfsKatalog {
                     String naehrstoff = jnaehrstoffliste.names().getString(j);
                     naehrstoffelist.add(new Naehrstoff(naehrstoff, jnaehrstoffliste.getDouble(naehrstoff)));
                 }
-                Collections.sort(naehrstoffelist,new Comparator<Naehrstoff>() {
+                Collections.sort(naehrstoffelist, new Comparator<Naehrstoff>() {
 
                     public int compare(Naehrstoff arg0, Naehrstoff arg1) {
-                        return (int) Math.round((arg1.getMenge()-arg0.getMenge())*10000);
+                        return (int) Math.round((arg1.getMenge() - arg0.getMenge()) * 10000);
                     }
                 });
                 bedarfsliste.add(new Bedarf(bedarfsname, naehrstoffelist));

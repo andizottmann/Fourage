@@ -4,17 +4,35 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/app_name"
+ style="@style/PageTitle"
+    />
     <Button
         android:id="@+id/pferdeverwaltenbutton"
         android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-        android:text="Pferde verwalten"
+        android:text="@string/pferdeverwalten"
             />
-    <TextView
-    android:id="@+id/mytext"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Hello World, MainActivity"
-    />
+    <Button
+        android:id="@+id/futtermittelverwaltenbutton"
+        android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+        android:text="@string/futtermittelverwalten"
+            />
+    <Button
+        android:id="@+id/rationsplanbutton"
+        android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+        android:text="@string/rationsplan"
+            />
+    <Button
+        android:id="@+id/scanbutton"
+        android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+        android:text="Barcode scannen"
+            />
 </LinearLayout>
 

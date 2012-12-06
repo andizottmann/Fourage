@@ -5,6 +5,8 @@
       android:versionName="1.0">
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="FourageApplication">
         <activity android:name="MainActivity"
+                  android:configChanges="keyboardHidden|orientation"
+                  android:theme="@style/HeyTheme"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -12,7 +14,19 @@
             </intent-filter>
         </activity>
         <activity android:name="PferdeVerwaltenActivity"
-                  android:label="@string/app_name">
+                  android:theme="@style/HeyTheme"
+                  android:windowSoftInputMode="stateHidden"
+                  android:label="@string/pferdeverwalten">
+        </activity>
+          <activity android:name="FuttermittelVerwaltenActivity"
+                  android:theme="@style/HeyTheme"
+                  android:windowSoftInputMode="stateHidden"
+                  android:label="@string/futtermittelverwalten">
+        </activity>
+        <activity android:name="RationsplanActivity"
+                  android:theme="@style/HeyTheme"
+                  android:windowSoftInputMode="stateHidden"
+                  android:label="@string/rationsplan">
         </activity>
     </application>
 </manifest>

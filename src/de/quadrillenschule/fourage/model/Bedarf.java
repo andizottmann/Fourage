@@ -31,16 +31,10 @@ public class Bedarf {
             Naehrstoff rn = new Naehrstoff(n.getName(), menge);
             retval.add(rn);
         }
-        return new Bedarf(getName() + "/" + pferd.getName(), retval);
+        return new Bedarf(getName(), retval);
     }
 
-    public String toString() {
-        String retval = getName() + "\n";
-        for (Naehrstoff n : getNaehrstoffe()) {
-            retval += n.getName() + ": " + Helper.round(n.getMenge())+"\n";
-        }
-        return retval;
-    }
+   
 
     /**
      * @return the name
@@ -68,5 +62,9 @@ public class Bedarf {
      */
     public void setNaehrstoffe(ArrayList<Naehrstoff> naehrstoffe) {
         this.naehrstoffe = naehrstoffe;
+    }
+
+    public String toString() {
+        return getName();
     }
 }

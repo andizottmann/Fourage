@@ -13,6 +13,8 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,6 +28,18 @@ public class FuttermittelKatalog {
 
     public FuttermittelKatalog() {
         futtermittel = new ArrayList();
+    }
+
+
+   
+
+    public Futtermittel getFuttermittelByName(String name) {
+        for (Futtermittel f : futtermittel) {
+            if (f.getName().equals(name)) {
+                return f;
+            }
+        }
+        return null;
     }
 
     public void lade(Application app) {
@@ -48,15 +62,28 @@ public class FuttermittelKatalog {
                 ArrayList<Naehrstoff> naehrstoffelist = new ArrayList();
                 JSONObject jnaehrstoffliste = jo.getJSONObject(futtermittelname);
                 for (int j = 0; j < jnaehrstoffliste.length(); j++) {
-                    String naehrstoff = jnaehrstoffliste.names().getString(i);
+                    String naehrstoff = jnaehrstoffliste.names().getString(j);
                     naehrstoffelist.add(new Naehrstoff(naehrstoff, jnaehrstoffliste.getDouble(naehrstoff)));
                 }
-                futtermittel.add(new Futtermittel(futtermittelname, naehrstoffelist));
+                Futtermittel fm=new Futtermittel(futtermittelname, naehrstoffelist);
+                fm.extractAttributesFromNaehrstoffe();
+                futtermittel.add(fm);
             }
-           
+               selfsort(futtermittel);
+
         } catch (JSONException ex) {
             ex.printStackTrace();
             ;
         }
     }
+
+    public static void selfsort(ArrayList<Futtermittel> futtermittel){
+     Collections.sort(futtermittel,new Comparator<Futtermittel>() {
+
+                    public int compare(Futtermittel arg0, Futtermittel arg1) {
+                        return (int) Math.round((arg1.getMaximalwert()-arg0.getMaximalwert())*10000);
+                    }
+                });
+    }
+
 }

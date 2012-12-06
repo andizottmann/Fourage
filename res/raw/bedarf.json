@@ -16,5 +16,23 @@
         'Phosphor':0.00003,
         'Magnesium':0.0000217,
         'Kalium':0.000065
+    },
+    'Leistung (mittel)':{
+        'Trockensubstanz':0.019,
+        'Energie':0.167,
+        'Rohprotein':0.000833,
+        'Calcium':0.0000533,
+        'Phosphor':0.00003,
+        'Magnesium':0.0000217,
+        'Kalium':0.00008
+    },
+    'Leistung (schwer)':{
+        'Trockensubstanz':0.022,
+        'Energie':0.212,
+        'Rohprotein':0.000967,
+        'Calcium':0.0000567,
+        'Phosphor':0.000032,
+        'Magnesium':0.000025,
+        'Kalium':0.00012
     }
 }
