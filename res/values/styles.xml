@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-<style name="HeyTheme" parent="android:Theme.Holo.Light">
-     <item name="android:windowNoTitle">true</item>
+    <style name="HeyTheme" parent="android:Theme.Holo.Light">
+        <item name="android:windowNoTitle">true</item>
 
-</style>
+    </style>
 
-<style name="PickerStyle" parent="android:Theme.Light"/>
- <style name="PageTitle">
+    <style name="PickerStyle" parent="android:Theme.Light"/>
+    <style name="PageTitle">
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textStyle">bold</item>
     </style>
-  
+    <style name="BigSize">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

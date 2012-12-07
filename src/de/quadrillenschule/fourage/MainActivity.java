@@ -44,6 +44,14 @@ public class MainActivity extends Activity {
                 startActivity(myIntent);
             }
         });
+         ((Button) findViewById(R.id.rationsplanviewbutton)).setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                  Intent myIntent = new Intent().setClass(getApplicationContext(), RationsplanViewActivity.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                startActivity(myIntent);
+            }
+        });
 
         ((Button) findViewById(R.id.scanbutton)).setOnClickListener(new View.OnClickListener() {
 
@@ -77,7 +85,7 @@ public class MainActivity extends Activity {
                 }
                 if (retval != null) {
                     ((FourageApplication) getApplication()).selectedPferdeIndex = ((FourageApplication) getApplication()).pferde.indexOf(retval);
-                    Intent myIntent = new Intent().setClass(getApplicationContext(), RationsplanActivity.class);
+                    Intent myIntent = new Intent().setClass(getApplicationContext(), RationsplanViewActivity.class);
                     myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
                     startActivity(myIntent);
 

@@ -66,10 +66,16 @@ public class PferdeVerwaltenActivity extends Activity {
         pet.setText(((FourageApplication) this.getApplication()).pferde.get(pferdeindex).getName());
 
         final SeekBar gewichtSeekBar = (SeekBar) findViewById(R.id.pferdegewicht);
-        gewichtSeekBar.setProgress((int) ((FourageApplication) this.getApplication()).pferde.get(pferdeindex).getGewicht()-300);
+        gewichtSeekBar.setProgress((int) ((FourageApplication) this.getApplication()).pferde.get(pferdeindex).getGewicht() - 300);
 
         final TextView gewichtsAnzeige = (TextView) findViewById(R.id.pferdegewichtanzeige);
-        gewichtsAnzeige.setText("Gewicht: "+((FourageApplication) this.getApplication()).pferde.get(pferdeindex).getGewicht() + " kg");
+        gewichtsAnzeige.setText("Gewicht: " + ((FourageApplication) this.getApplication()).pferde.get(pferdeindex).getGewicht() + " kg");
+
+        final SeekBar futterigkeitSeekBar = (SeekBar) findViewById(R.id.futterigkeit);
+        futterigkeitSeekBar.setProgress((int) (((FourageApplication) this.getApplication()).pferde.get(pferdeindex).getFuttrigkeit() * 10.0) - 5);
+
+        final TextView futterigkeitsAnzeige = (TextView) findViewById(R.id.futterigkeittanzeige);
+        futterigkeitsAnzeige.setText("Futterigkeit: " + ((int) (((FourageApplication) this.getApplication()).pferde.get(pferdeindex).getFuttrigkeit() * 100.0)) + " %");
 
         final Spinner bedarfsSpinner = (Spinner) findViewById(R.id.bedarfsSelector);
         bedarfsSpinner.setAdapter(new BedarfsplanListAdapter(this, ((FourageApplication) this.getApplication()).bedarfsKatalog.bedarfsliste, android.R.layout.simple_spinner_item, this));
@@ -137,7 +143,7 @@ public class PferdeVerwaltenActivity extends Activity {
 
 
         final SeekBar gewichtSeekBar = (SeekBar) findViewById(R.id.pferdegewicht);
-       
+
         gewichtSeekBar.setMax(600);
         gewichtSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -149,9 +155,9 @@ public class PferdeVerwaltenActivity extends Activity {
 
             public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
                 final Spinner pferdeSpinner = (Spinner) findViewById(R.id.pferdeSelector);
-                ((Pferd) pferdeSpinner.getSelectedItem()).setGewicht(arg1+300);
+                ((Pferd) pferdeSpinner.getSelectedItem()).setGewicht(arg1 + 300);
                 final TextView gewichtsAnzeige = (TextView) findViewById(R.id.pferdegewichtanzeige);
-                gewichtsAnzeige.setText("Gewicht: "+((Pferd) pferdeSpinner.getSelectedItem()).getGewicht() + " kg");
+                gewichtsAnzeige.setText("Gewicht: " + ((Pferd) pferdeSpinner.getSelectedItem()).getGewicht() + " kg");
 
             }
 
@@ -161,16 +167,33 @@ public class PferdeVerwaltenActivity extends Activity {
             public void onStopTrackingTouch(SeekBar arg0) {
             }
         });
-        /*  final EditText peg = (EditText) findViewById(R.id.pferdegewicht);
-        peg.setOnEditorActionListener(new OnEditorActionListener() {
 
-        public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
-        final Spinner pferdeSpinner = (Spinner) findViewById(R.id.pferdeSelector);
-        ((Pferd) pferdeSpinner.getSelectedItem()).setGewicht(Float.parseFloat(arg0.getText() + ""));
-        updateFields(lastPferdeIndex);
-        return true;
-        }
-        });*/
+        final SeekBar futtrigkeitSeekBar = (SeekBar) findViewById(R.id.futterigkeit);
+
+        futtrigkeitSeekBar.setMax(10);
+        futtrigkeitSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            public void onSeekBarChange(NumberPicker arg0, int arg1, int arg2) {
+
+                updateFields(lastPferdeIndex);
+
+            }
+
+            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+                final Spinner pferdeSpinner = (Spinner) findViewById(R.id.pferdeSelector);
+                ((Pferd) pferdeSpinner.getSelectedItem()).setFuttrigkeit((arg1+5.0)/10.0);
+                final TextView futterigkeitsAnzeige = (TextView) findViewById(R.id.futterigkeittanzeige);
+                futterigkeitsAnzeige.setText("Futterigkeit: " + ((int)(((Pferd) pferdeSpinner.getSelectedItem()).getFuttrigkeit()*100.0)) + " %");
+
+            }
+
+            public void onStartTrackingTouch(SeekBar arg0) {
+            }
+
+            public void onStopTrackingTouch(SeekBar arg0) {
+            }
+        });
+
 
         final Spinner bedarfsSpinner = (Spinner) findViewById(R.id.bedarfsSelector);
         bedarfsSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {

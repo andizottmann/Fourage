@@ -11,6 +11,7 @@
     <string name="futtermittelentfernen">Futtermittel -</string>
     <string name="pferdmitbarcode">Barcode mit Pferd verknüpfen</string>
     <string name="pferdeverwalten">Pferde verwalten</string>
-    <string name="rationsplan">Rationsplan</string>
+    <string name="rationsplan">Rationsplan bearbeiten</string>
+     <string name="rationsplanview">Rationsplan anzeigen</string>
     <string name="futtermittelverwalten">Futtermittel verwalten</string>
 </resources>

@@ -28,5 +28,10 @@
                   android:windowSoftInputMode="stateHidden"
                   android:label="@string/rationsplan">
         </activity>
+          <activity android:name="RationsplanViewActivity"
+                  android:theme="@style/HeyTheme"
+                  android:windowSoftInputMode="stateHidden"
+                  android:label="@string/rationsplanview">
+        </activity>
     </application>
 </manifest>

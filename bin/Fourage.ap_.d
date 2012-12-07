@@ -6,6 +6,7 @@ C:\Users\andi\Documents\NetBeansProjects\Fourage\res\layout\futtermittelverwalte
 C:\Users\andi\Documents\NetBeansProjects\Fourage\res\layout\main.xml \
 C:\Users\andi\Documents\NetBeansProjects\Fourage\res\layout\pferdeverwalten.xml \
 C:\Users\andi\Documents\NetBeansProjects\Fourage\res\layout\rationsplan.xml \
+C:\Users\andi\Documents\NetBeansProjects\Fourage\res\layout\rationsplanview.xml \
 C:\Users\andi\Documents\NetBeansProjects\Fourage\res\raw\bedarf.json \
 C:\Users\andi\Documents\NetBeansProjects\Fourage\res\raw\futtermittel.json \
 C:\Users\andi\Documents\NetBeansProjects\Fourage\res\values\strings.xml \

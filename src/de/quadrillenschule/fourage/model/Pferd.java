@@ -19,7 +19,7 @@ public class Pferd {
     private String name = "Standardpferd";
     private double gewicht = 600.0;
     private Date geburtstag = new Date(2000, 1, 1);
-    private double futtrigkeit = 1.0f;
+    private double futtrigkeit = 1.0;
     private String barcode = "";
     private Bedarf bedarf;
     private ArrayList<Futtermittel> futtermittel;

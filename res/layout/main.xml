@@ -28,6 +28,12 @@
 	android:layout_height="wrap_content"
         android:text="@string/rationsplan"
             />
+               <Button
+        android:id="@+id/rationsplanviewbutton"
+        android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+        android:text="@string/rationsplanview"
+            />
     <Button
         android:id="@+id/scanbutton"
         android:layout_width="match_parent"
