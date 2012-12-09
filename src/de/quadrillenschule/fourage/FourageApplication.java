@@ -9,9 +9,11 @@ import android.os.Message;
 import android.util.JsonReader;
 import android.util.JsonWriter;
 import de.quadrillenschule.fourage.helper.CrashLog;
+import de.quadrillenschule.fourage.model.Bedarf;
 import de.quadrillenschule.fourage.model.BedarfsKatalog;
 import de.quadrillenschule.fourage.model.Futtermittel;
 import de.quadrillenschule.fourage.model.FuttermittelKatalog;
+import de.quadrillenschule.fourage.model.FuttermittelProBedarf;
 import de.quadrillenschule.fourage.model.Pferd;
 import java.io.File;
 import java.io.FileInputStream;
@@ -68,9 +70,17 @@ public class FourageApplication extends Application {
         } catch (Exception e) {
             Pferd pferd = new Pferd();
             pferd.setBedarf(bedarfsKatalog.bedarfsliste.get(0));
-            for (Futtermittel f : futtermittelKatalog.futtermittel) {
-                pferd.getFuttermittel().add(f.clone());
+            ArrayList<FuttermittelProBedarf> fmpa=new ArrayList<FuttermittelProBedarf>();
+            for (Bedarf b:bedarfsKatalog.bedarfsliste){
+           // for (Futtermittel f : futtermittelKatalog.futtermittel) {
+                FuttermittelProBedarf fmp=new FuttermittelProBedarf();
+                fmp.futtermittel=futtermittelKatalog.futtermittel;
+                fmp.bedarf=b;
+                fmpa.add(fmp.clone());
+                       
+            //}
             }
+              pferd.setFuttermittelProBedarf(fmpa);
             pferde.add(pferd);
         }
     }

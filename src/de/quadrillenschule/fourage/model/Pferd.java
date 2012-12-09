@@ -22,15 +22,15 @@ public class Pferd {
     private double futtrigkeit = 1.0;
     private String barcode = "";
     private Bedarf bedarf;
-    private ArrayList<Futtermittel> futtermittel;
+    private ArrayList<FuttermittelProBedarf> futtermittelProBedarf;
 
     public Pferd() {
-        futtermittel = new ArrayList();
+        futtermittelProBedarf = new ArrayList();
     }
 
     public Pferd(JsonReader reader, BedarfsKatalog bedarfsKatalog,
             FuttermittelKatalog futtermittelKatalog) throws IOException {
-        futtermittel = new ArrayList();
+        futtermittelProBedarf = new ArrayList();
         reader.beginObject();
         while (reader.hasNext()) {
             String current = reader.nextName();
@@ -45,12 +45,19 @@ public class Pferd {
                 bedarf = bedarfsKatalog.getByName(bedarfstr);
             } else if (current.equals("futtrigkeit")) {
                 futtrigkeit = reader.nextDouble();
-            } else if (current.equals("futtermittel")) {
+            } else if (current.equals("futtermittelprobedarf")) {
                 reader.beginArray();
                 while (reader.hasNext()) {
-                    Futtermittel fm = futtermittelKatalog.getFuttermittelByName(reader.nextString()).clone();
-                    fm.setMenge(reader.nextDouble());
-                    futtermittel.add(fm);
+                    FuttermittelProBedarf fpb = new FuttermittelProBedarf();
+                    fpb.bedarf = bedarfsKatalog.getByName(reader.nextString());
+                    reader.beginArray();
+                    while (reader.hasNext()) {
+                        Futtermittel fm = futtermittelKatalog.getFuttermittelByName(reader.nextString()).clone();
+                        fm.setMenge(reader.nextDouble());
+                        fpb.futtermittel.add(fm);
+
+                    }
+                    reader.endArray();
                 }
                 reader.endArray();
             } else {
@@ -67,11 +74,16 @@ public class Pferd {
         writer.name("gewicht").value(gewicht);
         writer.name("bedarf").value(bedarf.getName());
         writer.name("futtrigkeit").value(futtrigkeit);
-        writer.name("futtermittel");
+        writer.name("futtermittelprobedarf");
         writer.beginArray();
-        for (Futtermittel fm : futtermittel) {
-            writer.value(fm.getName());
-            writer.value(fm.getMenge());
+        for (FuttermittelProBedarf fpb : futtermittelProBedarf) {
+            writer.value(fpb.bedarf.getName());
+            writer.beginArray();
+            for (Futtermittel fm : fpb.futtermittel) {
+                writer.value(fm.getName());
+                writer.value(fm.getMenge());
+            }
+            writer.endArray();
         }
         writer.endArray();
         writer.endObject();
@@ -83,7 +95,7 @@ public class Pferd {
 
     public double getIstWertNaehrstoff(Naehrstoff naehrstoff) {
         double retval = 0.0;
-        for (Futtermittel fm : futtermittel) {
+        for (Futtermittel fm : futtermittel(bedarf)) {
             for (Naehrstoff ns : fm.getNaehrstoffe()) {
                 if (ns.getName().equals(naehrstoff.getName())) {
                     retval += fm.getMenge() * ns.getMenge();
@@ -186,14 +198,14 @@ public class Pferd {
      * @return the futtermittel
      */
     public ArrayList<Futtermittel> getFuttermittel() {
-        return futtermittel;
+        return futtermittel(bedarf);
     }
 
     /**
      * @param futtermittel the futtermittel to set
      */
-    public void setFuttermittel(ArrayList<Futtermittel> futtermittel) {
-        this.futtermittel = futtermittel;
+    public void setFuttermittelProBedarf(ArrayList<FuttermittelProBedarf> futtermittelProBedarf) {
+        this.futtermittelProBedarf = futtermittelProBedarf;
     }
 
     @Override
@@ -203,9 +215,18 @@ public class Pferd {
         retval.setGewicht(gewicht);
         retval.setBedarf(bedarf);
         retval.setFuttrigkeit(futtrigkeit);
-        for (Futtermittel f : futtermittel) {
-            retval.getFuttermittel().add(f.clone());
+        for (FuttermittelProBedarf f : futtermittelProBedarf) {
+            retval.futtermittelProBedarf.add(f.clone());
         }
         return retval;
+    }
+
+    public ArrayList<Futtermittel> futtermittel(Bedarf bedarf) {
+        for (FuttermittelProBedarf fmp : futtermittelProBedarf) {
+            if (fmp.bedarf.getName().equals(bedarf.getName())) {
+                return fmp.futtermittel;
+            }
+        }
+        return null;
     }
 }
