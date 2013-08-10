@@ -83,6 +83,7 @@ public class RationsplanActivity extends Activity {
     }
 
     void updateFields(int pferdeindex) {
+        ((FourageApplication) this.getApplication()).selectedPferdeIndex=pferdeindex;
         Pferd pferd = ((FourageApplication) getApplication()).pferde.get(pferdeindex);
         Bedarf bedarf = pferd.getBedarf().calcBedarfFuerPferd(pferd);
         updateRationsPlan();

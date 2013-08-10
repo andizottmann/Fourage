@@ -15,17 +15,19 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Filter;
 import de.quadrillenschule.fourage.model.Futtermittel;
 import de.quadrillenschule.fourage.model.FuttermittelKatalog;
+import de.quadrillenschule.fourage.model.FuttermittelProBedarf;
 import java.util.ArrayList;
 
 public class FuttermittelKatalogListAdapter extends ArrayAdapter<Futtermittel> {
 
-    private ArrayList<Futtermittel> futtermittelkatalog, futtermittelpropferd;
+    private ArrayList<Futtermittel> futtermittelkatalog;
+    private ArrayList<FuttermittelProBedarf> futtermittelpropferd;
     Context context;
     NoFilter noFilter;
     Activity activity;
 
     public FuttermittelKatalogListAdapter(
-            Context pcontext, ArrayList<Futtermittel> values, ArrayList<Futtermittel> pferdvalues, int viewId, Activity activity) {
+            Context pcontext, ArrayList<Futtermittel> values, ArrayList<FuttermittelProBedarf> pferdvalues, int viewId, Activity activity) {
         super(pcontext, viewId, values);
         this.context = pcontext;
         this.futtermittelkatalog = values;
@@ -45,14 +47,22 @@ public class FuttermittelKatalogListAdapter extends ArrayAdapter<Futtermittel> {
                 String fm = "" + arg0.getText();
                 if (arg1) {
                     if (!itemContained(fm)) {
-                        futtermittelpropferd.add(getKatalogItem(fm));
-                        FuttermittelKatalog.selfsort(futtermittelpropferd);
+                        for (FuttermittelProBedarf fmp : futtermittelpropferd) {
+                            fmp.futtermittel.add(getKatalogItem(fm));
+                            FuttermittelKatalog.selfsort(fmp.futtermittel);
+                        }
                     }
 
                 } else {
                     if (itemContained(fm)) {
-                        futtermittelpropferd.remove(getPositionPferdeFM(fm));
-                          FuttermittelKatalog.selfsort(futtermittelpropferd);
+                        int i=0;
+                        for (FuttermittelProBedarf fmp : futtermittelpropferd) {
+                            try {
+                            fmp.futtermittel.remove(getPositionPferdeFM(fm,i));
+                            } catch (ArrayIndexOutOfBoundsException aioe){}
+                            FuttermittelKatalog.selfsort(fmp.futtermittel);
+                            i++;
+                        }
                     }
                 }
             }
@@ -63,7 +73,7 @@ public class FuttermittelKatalogListAdapter extends ArrayAdapter<Futtermittel> {
 
     public boolean itemContained(int position) {
         Futtermittel fm = futtermittelkatalog.get(position);
-        for (Futtermittel fmp : futtermittelpropferd) {
+        for (Futtermittel fmp : futtermittelpropferd.get(0).futtermittel) {
             if (fmp.getName().equals(fm.getName())) {
                 return true;
             }
@@ -74,7 +84,7 @@ public class FuttermittelKatalogListAdapter extends ArrayAdapter<Futtermittel> {
 
     public boolean itemContained(String fm) {
         //  Futtermittel fm = futtermittelkatalog.get(position);
-        for (Futtermittel fmp : futtermittelpropferd) {
+        for (Futtermittel fmp : futtermittelpropferd.get(0).futtermittel) {
             if (fmp.getName().equals(fm)) {
                 return true;
             }
@@ -92,9 +102,9 @@ public class FuttermittelKatalogListAdapter extends ArrayAdapter<Futtermittel> {
         return null;
     }
 
-    public int getPositionPferdeFM(String fm) {
+    public int getPositionPferdeFM(String fm, int bedarf) {
         for (int i = 0; i < futtermittelpropferd.size(); i++) {
-            if (futtermittelpropferd.get(i).getName().equals(fm)) {
+            if (futtermittelpropferd.get(bedarf).futtermittel.get(i).getName().equals(fm)) {
                 return i;
             }
         }

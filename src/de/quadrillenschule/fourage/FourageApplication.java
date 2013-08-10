@@ -5,26 +5,22 @@
 package de.quadrillenschule.fourage;
 
 import android.app.Application;
-import android.os.Message;
 import android.util.JsonReader;
 import android.util.JsonWriter;
 import de.quadrillenschule.fourage.helper.CrashLog;
 import de.quadrillenschule.fourage.model.Bedarf;
 import de.quadrillenschule.fourage.model.BedarfsKatalog;
-import de.quadrillenschule.fourage.model.Futtermittel;
 import de.quadrillenschule.fourage.model.FuttermittelKatalog;
 import de.quadrillenschule.fourage.model.FuttermittelProBedarf;
 import de.quadrillenschule.fourage.model.Pferd;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

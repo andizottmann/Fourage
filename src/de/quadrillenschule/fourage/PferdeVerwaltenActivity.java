@@ -37,8 +37,9 @@ public class PferdeVerwaltenActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pferdeverwalten);
+        int index = ((FourageApplication) this.getApplication()).selectedPferdeIndex;
 
-        updateFields(0);
+        updateFields(index);
         setListeners();
 
     }
@@ -56,6 +57,7 @@ public class PferdeVerwaltenActivity extends Activity {
     }
 
     void updateFields(int pferdeindex) {
+        ((FourageApplication) this.getApplication()).selectedPferdeIndex=pferdeindex;
         final Spinner pferdeSpinner = (Spinner) findViewById(R.id.pferdeSelector);
         SpinnerAdapter adapter = new PferdeListAdapter(this, ((FourageApplication) this.getApplication()).pferde, android.R.layout.simple_spinner_item, this);
 

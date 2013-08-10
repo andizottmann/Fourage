@@ -22,10 +22,11 @@ public class Pferd {
     private double futtrigkeit = 1.0;
     private String barcode = "";
     private Bedarf bedarf;
-    private ArrayList<FuttermittelProBedarf> futtermittelProBedarf;
+    public ArrayList<FuttermittelProBedarf> futtermittelProBedarf;
 
     public Pferd() {
         futtermittelProBedarf = new ArrayList();
+
     }
 
     public Pferd(JsonReader reader, BedarfsKatalog bedarfsKatalog,
@@ -58,6 +59,7 @@ public class Pferd {
 
                     }
                     reader.endArray();
+                    futtermittelProBedarf.add(fpb);
                 }
                 reader.endArray();
             } else {

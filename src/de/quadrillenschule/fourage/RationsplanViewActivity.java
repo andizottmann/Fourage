@@ -59,6 +59,7 @@ public class RationsplanViewActivity extends Activity {
     }
 
     void updateFields(int pferdeindex) {
+        ((FourageApplication) this.getApplication()).selectedPferdeIndex=pferdeindex;
         Pferd pferd = ((FourageApplication) getApplication()).pferde.get(pferdeindex);
         updateRationsPlan();
     }

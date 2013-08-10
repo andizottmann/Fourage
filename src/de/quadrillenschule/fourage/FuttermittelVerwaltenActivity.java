@@ -6,24 +6,14 @@ package de.quadrillenschule.fourage;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.NumberPicker;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
-import android.widget.TextView;
-import de.quadrillenschule.fourage.gui.BedarfsplanListAdapter;
 import de.quadrillenschule.fourage.gui.FuttermittelKatalogListAdapter;
 import de.quadrillenschule.fourage.gui.PferdeListAdapter;
-import de.quadrillenschule.fourage.model.Bedarf;
-import de.quadrillenschule.fourage.model.Pferd;
 
 /**
  *
@@ -39,7 +29,7 @@ public class FuttermittelVerwaltenActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.futtermittelverwalten);
 
-        updateFields(0);
+        updateFields(((FourageApplication) this.getApplication()).selectedPferdeIndex);
         setListeners();
 
     }
@@ -57,6 +47,7 @@ public class FuttermittelVerwaltenActivity extends Activity {
     }
 
     void updateFields(int pferdeindex) {
+        ((FourageApplication) this.getApplication()).selectedPferdeIndex=pferdeindex;
         final Spinner pferdeSpinner = (Spinner) findViewById(R.id.pferdeSelectorFM);
         SpinnerAdapter adapter = new PferdeListAdapter(this, ((FourageApplication) this.getApplication()).pferde, android.R.layout.simple_spinner_item, this);
 
@@ -64,7 +55,7 @@ public class FuttermittelVerwaltenActivity extends Activity {
         pferdeSpinner.setSelection(pferdeindex);
 
         final ListView fmlv = (ListView) findViewById(R.id.futtermittelListFM);
-        FuttermittelKatalogListAdapter adpater = new FuttermittelKatalogListAdapter(this, ((FourageApplication) this.getApplication()).futtermittelKatalog.futtermittel, ((FourageApplication) this.getApplication()).pferde.get(pferdeindex).getFuttermittel(), R.id.futtermittelListFM, this);
+        FuttermittelKatalogListAdapter adpater = new FuttermittelKatalogListAdapter(this, ((FourageApplication) this.getApplication()).futtermittelKatalog.futtermittel, ((FourageApplication) this.getApplication()).pferde.get(pferdeindex).futtermittelProBedarf, R.id.futtermittelListFM, this);
         fmlv.setAdapter(adpater);
 
     }
