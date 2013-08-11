@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Fourage</string>
+    <string name="app_subtitle">Rationsberechnung für Pferde</string>
     <string name="pferdename">Pferdename</string>
     <string name="gewicht">Gewicht</string>
     <string name="bedarfsplan">Bedarfsplan</string>
@@ -12,7 +13,7 @@
     <string name="pferdmitbarcode">Barcode mit Pferd verknüpfen</string>
     <string name="pferdeverwalten">Pferde verwalten</string>
     <string name="rationsplan">Rationsplan bearbeiten</string>
-     <string name="rationsplanview">Rationsplan anzeigen</string>
+    <string name="rationsplanview">Rationsplan anzeigen</string>
     <string name="futtermittelverwalten">Futtermittel verwalten</string>
-    <string name="barcodescan">Barcode scannen</string>
+    <string name="barcodescan">Barcode scannen und Rationsplan anzeigen</string>
 </resources>

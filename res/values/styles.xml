@@ -11,8 +11,18 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textStyle">bold</item>
     </style>
+     <style name="SubTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+    <style name="BigButton">
+        <item name="android:background">@drawable/bigbuttondrawable</item>
+         <item name="android:layout_marginBottom">30dp</item>
+    </style>
     <style name="BigSize">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
+       
     </style>
 </resources>

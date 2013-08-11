@@ -1,5 +1,7 @@
 C:\Users\Andreas\Documents\Projekte\Fourage\bin\Fourage.ap_ \
- : C:\Users\Andreas\Documents\Projekte\Fourage\res\drawable-hdpi\ic_launcher.png \
+ : C:\Users\Andreas\Documents\Projekte\Fourage\res\drawable-hdpi\bigbuttondrawable.xml \
+C:\Users\Andreas\Documents\Projekte\Fourage\res\drawable-hdpi\fouragetitle.png \
+C:\Users\Andreas\Documents\Projekte\Fourage\res\drawable-hdpi\ic_launcher.png \
 C:\Users\Andreas\Documents\Projekte\Fourage\res\drawable-hdpi\stroh.png \
 C:\Users\Andreas\Documents\Projekte\Fourage\res\drawable-ldpi\ic_launcher.png \
 C:\Users\Andreas\Documents\Projekte\Fourage\res\drawable-mdpi\ic_launcher.png \
@@ -12,6 +14,7 @@ C:\Users\Andreas\Documents\Projekte\Fourage\res\raw\bedarf.json \
 C:\Users\Andreas\Documents\Projekte\Fourage\res\raw\futtermittel.json \
 C:\Users\Andreas\Documents\Projekte\Fourage\res\values\strings.xml \
 C:\Users\Andreas\Documents\Projekte\Fourage\res\values\styles.xml \
+C:\Users\Andreas\Documents\Projekte\Fourage\bin\res\drawable-hdpi\fouragetitle.png \
 C:\Users\Andreas\Documents\Projekte\Fourage\bin\res\drawable-hdpi\ic_launcher.png \
 C:\Users\Andreas\Documents\Projekte\Fourage\bin\res\drawable-hdpi\stroh.png \
 C:\Users\Andreas\Documents\Projekte\Fourage\bin\res\drawable-ldpi\ic_launcher.png \
