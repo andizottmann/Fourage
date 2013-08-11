@@ -1,44 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/app_name"
- style="@style/PageTitle"
-    />
-    <Button
-        android:id="@+id/pferdeverwaltenbutton"
-        android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-        android:text="@string/pferdeverwalten"
+<LinearLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:orientation="vertical"
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent"
+                 android:background="@drawable/stroh">
+    <LinearLayout android:orientation="vertical"                
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            style="@style/PageTitle"
+        />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"    
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical"    
+                      android:layout_width="wrap_content"
+                      android:layout_height="fill_parent"
+                      android:layout_weight="1"  
+        >
+            <Button
+                android:id="@+id/pferdeverwaltenbutton"
+                android:text="@string/pferdeverwalten"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
             />
-    <Button
-        android:id="@+id/futtermittelverwaltenbutton"
-        android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-        android:text="@string/futtermittelverwalten"
+            <Button
+                android:id="@+id/futtermittelverwaltenbutton"
+                android:text="@string/futtermittelverwalten"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+               
             />
-    <Button
-        android:id="@+id/rationsplanbutton"
-        android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-        android:text="@string/rationsplan"
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical"    
+                 
+                      android:layout_width="wrap_content"
+                      android:layout_height="fill_parent"
+                      android:layout_weight="1"  
+                      android:layout_gravity="right"  
+        >
+            <Button
+                android:id="@+id/rationsplanbutton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+               
+                android:text="@string/rationsplan"
             />
-               <Button
-        android:id="@+id/rationsplanviewbutton"
-        android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-        android:text="@string/rationsplanview"
+            <Button
+                android:id="@+id/rationsplanviewbutton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+               
+                android:text="@string/rationsplanview"
+      
             />
-    <Button
-        android:id="@+id/scanbutton"
-        android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-        android:text="Barcode scannen"
-            />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"    
+                 
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+    
+        <Button
+            android:id="@+id/scanbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/barcodescan"
+       
+        
+        />
+    </LinearLayout>
 </LinearLayout>
 

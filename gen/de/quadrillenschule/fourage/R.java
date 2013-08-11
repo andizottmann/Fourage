@@ -12,6 +12,7 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int stroh=0x7f020001;
     }
     public static final class id {
         public static final int bedarfsSelector=0x7f07000f;
@@ -53,6 +54,7 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int barcodescan=0x7f05000e;
         public static final int bedarfsplan=0x7f050003;
         public static final int futtermittel=0x7f050006;
         public static final int futtermittelentfernen=0x7f050008;
